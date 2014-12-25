@@ -83,19 +83,7 @@ SET(MSGSERVER_SRCS
     src/DataCacheManager.cpp
     src/HandlerManager.cpp
     src/HandlerCommon.cpp
-    src/handlers/GETHandler.cpp
     src/handlers/CCLHandler.cpp
-    src/handlers/CUSHandler.cpp
-    src/handlers/USRHandler.cpp
-    src/handlers/LSVHandler.cpp
-    src/handlers/LGVHandler.cpp
-    src/handlers/SLGVHandler.cpp
-    src/handlers/SCOPHandler.cpp
-    src/handlers/LCAHandler.cpp
-    src/handlers/RUSHandler.cpp
-    src/handlers/NEVHandler.cpp
-    src/handlers/LIMHandler.cpp
-    src/handlers/CHGHandler.cpp
 )
 
 SET(MSGSERVER_HDRS
