@@ -1,0 +1,12 @@
+/*
+!.gitignore
+!.project
+!build.sh
+!CMakeLists.txt
+!/Bin/
+!/Doc/
+!/Inc/
+!/Lib/
+!/Src
+!/Script/
+!/MsgServer/
