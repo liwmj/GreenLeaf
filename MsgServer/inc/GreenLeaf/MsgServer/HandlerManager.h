@@ -30,8 +30,6 @@ private:
     void notifyHandler(GLNetIO::RequestBufferPtr msg);
 
     void baseCmder();
-    void loginCmder();
-    void statusCmder();
 
 private:
     bool _registered;
