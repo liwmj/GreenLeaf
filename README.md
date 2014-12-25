@@ -13,10 +13,15 @@ GreenLeaf最适合的应用领域是即时通讯的服务端。当然还不仅�
 
 ###2.2 软件整理流程图设计和描述
 ![image](https://github.com/liwangmj/GreenLeaf/blob/master/Doc/GreenLeaf_SoftwareArchitectureFigure.png) 
+
 	软件整体架构（图1）
+	
 ![image](https://github.com/liwangmj/GreenLeaf/blob/master/Doc/GreenLeaf_SingleRegionArchitectureFigure.png)
+
 	单地域服务器架构（图2）
+	
 ![image](https://github.com/liwangmj/GreenLeaf/blob/master/Doc/GreenLeaf_CrossDomainArchitectureFigure.png)
+
 	跨地域服务器架构（图3）
 
 三、软件功能描述
