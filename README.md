@@ -1,16 +1,17 @@
-一、引言
+GreenLeaf（绿叶）分布式服务器端中间件说明书v1.0
 ===================================
+
+一、引言
+-----------------------------------
 GreenLeaf的理念是让服务器的开发变得简单，成为服务端程序的绿叶；并且重视性能和可伸缩性，使用GreenLeaf开发出来的即时通讯服务端天生具有很强的伸缩性，扩展也很容易。我们在性能优化上也花了很多功夫，并且会持续进行，经过测试，登录可以到单台30万。
 
 二、软件总体设计
-===================================
-
-2.1 软件需求概括
 -----------------------------------
+
+###2.1 软件需求概括
 GreenLeaf最适合的应用领域是即时通讯的服务端。当然还不仅仅是即时通讯，还可以作为任何服务器的底层通讯框架，由于之前已经考虑到业务的热更新，可以采用Python进行混合编程来实现我们所要的功能，值得一说的是GreenLeaf可以完美跨平台。
 
-2.2 软件整理流程图设计和描述
------------------------------------
+###2.2 软件整理流程图设计和描述
 ![image](https://github.com/GreenLeaf/raw/master/Doc/GreenLeaf_SoftwareArchitectureFigure.png) 
 软件整体架构（图1）
 ![image](https://github.com/GreenLeaf/raw/master/Doc/GreenLeaf_SingleRegionArchitectureFigure.png)
@@ -19,10 +20,9 @@ GreenLeaf最适合的应用领域是即时通讯的服务端。当然还不仅�
 跨地域服务器架构（图3）
 
 三、软件功能描述
-===================================
-
-3.1 GreenLeaf的框架组成
 -----------------------------------
+
+###3.1 GreenLeaf的框架组成
 GreenLeaf 是基于C++/Python开发的高性能、分布式通用型服务器框架。
 
 包括三部分:
@@ -30,8 +30,7 @@ GreenLeaf 是基于C++/Python开发的高性能、分布式通用型服务器框
 	库, 包括了开发的常用工具库， 如连接管理、连接池等
 	工具包, 包括日志打印、UUID等
 
-3.2 GreenLeaf特性
------------------------------------
+###3.2 GreenLeaf特性
 > 快速、易上手的开发模型和api
 > 高可伸缩的多进程架构， 可以采用Python混合编程
 > 方便的服务器扩展机制，可快速扩展服务器类型和数量
@@ -40,8 +39,7 @@ GreenLeaf 是基于C++/Python开发的高性能、分布式通用型服务器框
 > 提供了完整的demo代码，可以作为很好的开发参考
 > 基于boost.asio开发，支持boost.asio支持的多种操作系统
 
-3.3 为什么使用GreenLeaf
------------------------------------
+###3.3 为什么使用GreenLeaf
 高并发、高实时的即时通讯服务器的开发是很复杂的工作。跟web应用一样， 一个好的开源容器或开发框架可以大大减少开发的复杂性，让开发变得更加容易。
 遗憾的是目前在即时通讯服务器开发领域一直没有太好的开源解决方案。 GreenLeaf将填补这个空白， 打造一款完全开源的高性能（并发）通用型服务器框架。
 GreenLeaf的优势有以下几点：
@@ -49,12 +47,11 @@ GreenLeaf的优势有以下几点：
 * 2．提供完整的开源消息服务器demo参考。 一个超过5千行代码的demo，使开发者可以随时借鉴demo的设计与开发思路。
 
 四、软件使用说明
-===================================
+-----------------------------------
 GreenLeaf框架主要有四个模块：GLUtils、GLDiskIO、GLDBIO、GLNetIO。
 使用者只需要包含相应的.h文件和调用.dll或.so即可使用相应的功能。
 
-GLUtils
------------------------------------
+###GLUtils
 GLUtils是框架的底层工具库，部分接口如下：
 
     void setThreadNumber(const std::size_t& num);
@@ -93,8 +90,7 @@ GLUtils是框架的底层工具库，部分接口如下：
 * currentPath()：获取当前运行程序的路径；
 * wirteLog()：打印日志；
 
-GLDiskIO
------------------------------------
+###GLDiskIO
 GLDiskIO是框架的本地数据解析库，部分接口如下：
 
     const bool loadIniFile(const std::string& inputFile);
@@ -146,8 +142,7 @@ GLDiskIO是框架的本地数据解析库，部分接口如下：
 * jsonData()：获取json文件里的具体数据；
 * setJsonData()：设置json文件里的具体数据；
 
-GLDBIO
------------------------------------
+###GLDBIO
 GLDBIO是框架的数据库操作库，部分接口如下：
 
     const bool initMySqlConnectionPool(const std::string& serverAddr,
@@ -169,8 +164,7 @@ GLDBIO是框架的数据库操作库，部分接口如下：
 * updateData()：更新MySQL数据；
 * exec()：发送SQL语句；
 
-GLNetIO
------------------------------------
+###GLNetIO
 GLNetIO是框架的网络通信库，部分接口如下：
 
     void tcpAcceptor(const unsigned short& port,
