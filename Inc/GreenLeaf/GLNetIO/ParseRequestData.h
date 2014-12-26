@@ -1,10 +1,10 @@
-/*
- * ParseRequestData.h
- *
- *  Created on: Nov 10, 2014
- *      Author: wim
+/**
+ * @file ParseRequestData.h
+ * @brief 解析请求数据的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef PARSEREQUESTDATA_H
 #define PARSEREQUESTDATA_H
 
@@ -17,6 +17,9 @@
 namespace GreenLeaf {
 namespace GLNetIO {
 
+/**
+ * @brief 解析请求数据类
+ */
 class ParseRequestData
 {
 public:
@@ -25,7 +28,7 @@ public:
     void parseAllData(const char* data, const std::size_t& dataSize);
 
 public:
-    RequestBufferPtr _requestBuffer;
+    RequestBufferPtr _requestBuffer;    /**< 请求数据的缓冲区 */
 
 private:
     const bool readCmdData(const char* data,
@@ -60,9 +63,9 @@ private:
     const std::size_t propValueToInt(std::string key);
 
 private:
-    std::size_t _bodySize;
-    std::size_t _leaveBodySize;
-    std::vector<char> _bufferLine;
+    std::size_t _bodySize;          /**< body数据的大小 */
+    std::size_t _leaveBodySize;     /**< 剩余body数据的大小 */
+    std::vector<char> _bufferLine;  /**< 行缓冲数据 */
 
 };
 

@@ -1,10 +1,10 @@
-/*
- * MySqlConnectionPool.cpp
- *
- *  Created on: Nov 20, 2014
- *      Author: wim
+/**
+ * @file MySqlConnectionPool.cpp
+ * @brief MySQL连接池的实现文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #include <cstdio>
 #include <iostream>
 #include <vector>
@@ -15,16 +15,32 @@
 namespace GreenLeaf {
 namespace GLDBIO {
 
+/**
+ * @brief 创建MySqlConnectionPool单例对象
+ * @return 返回MySqlConnectionPool对象
+ */
 MySqlConnectionPool& MySqlConnectionPool::instance()
 {
     static MySqlConnectionPool _gInstance;
     return _gInstance;
 }
 
+/**
+ * @brief 初始化MySqlConnectionPool对象
+ * @param super
+ */
 MySqlConnectionPool::MySqlConnectionPool(): super()
 {
 }
 
+/**
+ * @brief 设置MySqlConnectionPool连接参数
+ * @param serverAddr 数据库ip地址
+ * @param username 用户名
+ * @param passwd 用户密码
+ * @param dbname 指定使用的数据库
+ * @param maxSize 连接池大小
+ */
 void MySqlConnectionPool::setParam(const std::string& serverAddr,
         const std::string& username,
         const std::string& passwd,
@@ -39,6 +55,10 @@ void MySqlConnectionPool::setParam(const std::string& serverAddr,
         _maxSize = maxSize;
 }
 
+/**
+ * @brief 获取MySql数据库连接
+ * @return 返回MySql数据库连接
+ */
 MySqlConnectionPool::ConnectionPtr MySqlConnectionPool::connection()
 {
     ConnectionPtr connPtr(new MYSQL);
@@ -74,6 +94,10 @@ MySqlConnectionPool::ConnectionPtr MySqlConnectionPool::connection()
     return connPtr;
 }
 
+/**
+ * @brief 初始化MySql连接
+ * @return 返回是否初始化成功
+ */
 const bool MySqlConnectionPool::initConnection()
 {
     bool isInit = false;
@@ -85,6 +109,10 @@ const bool MySqlConnectionPool::initConnection()
     return isInit;
 }
 
+/**
+ * @brief 创建MySql数据库连接
+ * @return 返回MySql数据库连接的指针
+ */
 MySqlConnectionPool::ConnectionPtr MySqlConnectionPool::createConnection()
 {
     ConnectionPtr connPtr(new MYSQL);
@@ -128,6 +156,10 @@ MySqlConnectionPool::ConnectionPtr MySqlConnectionPool::createConnection()
     return connPtr;
 }
 
+/**
+ * @brief 释放MySql连接
+ * @param connPtr 指定需释放的连接
+ */
 void MySqlConnectionPool::releaseConnection(ConnectionPtr connPtr)
 {
     boost::mutex::scoped_lock lock(_mutex);
@@ -136,6 +168,9 @@ void MySqlConnectionPool::releaseConnection(ConnectionPtr connPtr)
     }
 }
 
+/**
+ * @brief 检查MySql连接
+ */
 void MySqlConnectionPool::checkDbConnections()
 {
     boost::mutex::scoped_lock lock(_mutex);
@@ -190,6 +225,11 @@ void MySqlConnectionPool::checkDbConnections()
     }
 }
 
+/**
+ * @brief 查询MySql里的数据
+ * @param query 查询语句
+ * @return 返回一行或一列数据
+ */
 const std::vector<std::string> MySqlConnectionPool::selectData(std::string& query)
 {
     std::vector<std::string> resVector;
@@ -226,6 +266,11 @@ const std::vector<std::string> MySqlConnectionPool::selectData(std::string& quer
     return resVector;
 }
 
+/**
+ * @brief 插入一条MySql数据
+ * @param query 查询语句
+ * @return 返回是否插入成功
+ */
 const bool MySqlConnectionPool::insertData(const std::string& query)
 {
     ConnectionPtr connPtr = this->connection();
@@ -246,6 +291,11 @@ const bool MySqlConnectionPool::insertData(const std::string& query)
     return true;
 }
 
+/**
+ * @brief 删除一条MySql数据
+ * @param query 查询语句
+ * @return 返回是否删除成功
+ */
 const bool MySqlConnectionPool::deleteData(const std::string& query)
 {
     ConnectionPtr connPtr = this->connection();
@@ -266,6 +316,11 @@ const bool MySqlConnectionPool::deleteData(const std::string& query)
     return true;
 }
 
+/**
+ * @brief 更新一条MySql数据
+ * @param query 查询语句
+ * @return 返回是否更新成功
+ */
 const bool MySqlConnectionPool::updateData(const std::string& query)
 {
     ConnectionPtr connPtr = this->connection();
@@ -286,6 +341,11 @@ const bool MySqlConnectionPool::updateData(const std::string& query)
     return true;
 }
 
+/**
+ * @brief 执行一条sql语句
+ * @param query 查询语句
+ * @return 返回是否执行成功
+ */
 const bool MySqlConnectionPool::exec(const std::string& query)
 {
     ConnectionPtr connPtr = this->connection();

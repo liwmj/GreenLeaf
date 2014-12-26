@@ -1,10 +1,10 @@
-/*
- * StringOpertion.cpp
- *
- *  Created on: Dec 23, 2014
- *      Author: wim
+/**
+ * @file StringOpertion.cpp
+ * @brief 字符串操作的实现文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #include <iostream>
 
 #include "GreenLeaf/GLUtils/StringOpertion.h"
@@ -12,16 +12,29 @@
 namespace GreenLeaf {
 namespace GLUtils {
 
+/**
+ * @brief 创建StringOperation的单例对象
+ * @return 返回StringOperation对象
+ */
 StringOperation& StringOperation::instance()
 {
     static StringOperation _gInstance;
     return _gInstance;
 }
 
+/**
+ * @brief 初始化StringOperation对象
+ */
 StringOperation::StringOperation()
 {
 }
 
+/**
+ * @brief 获取字符串拆分后的串组
+ * @param src 指定需拆分串
+ * @param token 指定字符
+ * @return 返回字符串拆分后的串组
+ */
 const std::vector<std::string> StringOperation::splitString(const std::string& src,
         const std::string token)
 {

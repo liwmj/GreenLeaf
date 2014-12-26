@@ -1,10 +1,10 @@
-/*
- * ParseRequestData.cpp
- *
- *  Created on: Nov 10, 2014
- *      Author: wim
+/**
+ * @file ParseRequestData.cpp
+ * @brief 解析数据的实现文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #include <cstring>
 #include <iostream>
 #include <cstdio>
@@ -19,6 +19,9 @@ using namespace std;
 namespace GreenLeaf {
 namespace GLNetIO {
 
+/**
+ * @brief 初始化ParseRequestData对象
+ */
 ParseRequestData::ParseRequestData():
         _requestBuffer(new RequestBuffer),
         _bodySize(0),
@@ -27,6 +30,11 @@ ParseRequestData::ParseRequestData():
     _requestBuffer->_reqStatus = REQ_NONE;
 }
 
+/**
+ * @brief 解析原始数据
+ * @param data 原始数据
+ * @param dataSize 数据大小
+ */
 void ParseRequestData::parseAllData(const char* data, const std::size_t& dataSize)
 {
     std::size_t dataIndex = 0;
@@ -59,6 +67,14 @@ void ParseRequestData::parseAllData(const char* data, const std::size_t& dataSiz
     }
 }
 
+/**
+ * @brief 解析命令行数据
+ * @param data 原始数据
+ * @param dataSize 原始数据大小
+ * @param dataIndex 数据下标
+ * @param lineData 单行数据
+ * @return 返回解析数据是否成功
+ */
 const bool ParseRequestData::readCmdData(const char* data,
         const std::size_t& dataSize,
         std::size_t& dataIndex,
@@ -85,6 +101,14 @@ const bool ParseRequestData::readCmdData(const char* data,
     return true;
 }
 
+/**
+ * @brief 解析prop数据
+ * @param data 原始数据
+ * @param dataSize 原始数据大小
+ * @param dataIndex 数据下标
+ * @param lineData 行数据
+ * @return 返回解析数据是否成功
+ */
 const bool ParseRequestData::readPropData(const char* data,
         const std::size_t& dataSize,
         std::size_t& dataIndex,
@@ -116,6 +140,13 @@ const bool ParseRequestData::readPropData(const char* data,
     return true;
 }
 
+/**
+ * @brief 解析body数据
+ * @param data 原始数据
+ * @param dataSize 数据大小
+ * @param dataIndex 数据下标
+ * @return 返回解析数据是否成功
+ */
 const bool ParseRequestData::readBodyData(const char* data,
         const std::size_t& dataSize,
         std::size_t& dataIndex)
@@ -152,6 +183,13 @@ const bool ParseRequestData::readBodyData(const char* data,
     return true;
 }
 
+/**
+ * @brief 解析数据完成后的处理
+ * @param data 原始数据
+ * @param dataSize 数据大小
+ * @param dataIndex 数据下标
+ * @return 返回处理是否成功
+ */
 const bool ParseRequestData::readDataDone(const char* data,
         const std::size_t& dataSize,
         std::size_t& dataIndex)
@@ -169,6 +207,14 @@ const bool ParseRequestData::readDataDone(const char* data,
     return true;
 }
 
+/**
+ * @brief 解析行数据
+ * @param data 原始数据
+ * @param dataSize 数据大小
+ * @param dataIndex 数据下标
+ * @param lineData 行数据
+ * @return 返回解析是否成功
+ */
 const bool ParseRequestData::lineData(const char* data,
         const std::size_t& dataSize,
         std::size_t& dataIndex,
@@ -200,6 +246,11 @@ const bool ParseRequestData::lineData(const char* data,
     return lineEnd;
 }
 
+/**
+ * @brief 操作行数据
+ * @param lineData 行数据
+ * @return 返回操作是否成功
+ */
 const bool ParseRequestData::processLineData(std::string& lineData)
 {
     std::size_t operateIndex = 0;
@@ -256,6 +307,10 @@ const bool ParseRequestData::processLineData(std::string& lineData)
     return true;
 }
 
+/**
+ * @brief 判断是否为其他命令
+ * @return 返回判断结果
+ */
 const bool ParseRequestData::isOtherCmd() const
 {
     if (_bufferLine.empty())
@@ -275,6 +330,10 @@ const bool ParseRequestData::isOtherCmd() const
     }
 }
 
+/**
+ * @brief 判断是否有body数据
+ * @return 返回判断结果
+ */
 const bool ParseRequestData::isCmdHaveBody()
 {
     bool isHaveBody = false;
@@ -295,11 +354,19 @@ const bool ParseRequestData::isCmdHaveBody()
     return isHaveBody;
 }
 
+/**
+ * @brief 设置methon数据
+ * @param methon 具体数据
+ */
 void ParseRequestData::setMethon(const std::string& methon)
 {
     _requestBuffer->_methon = methon;
 }
 
+/**
+ * @brief 设置params数据
+ * @param lineDataSubstr 子串数据
+ */
 void ParseRequestData::setParams(const std::string& lineDataSubstr)
 {
     _requestBuffer->_params.clear();
@@ -331,6 +398,11 @@ void ParseRequestData::setParams(const std::string& lineDataSubstr)
 
 }
 
+/**
+ * @brief 设置prop数据
+ * @param key prop的键
+ * @param value prop的值
+ */
 void ParseRequestData::setPropItem(std::string& key, const std::string& value)
 {
     std::transform(key.begin(), key.end(), key.begin(), ::tolower);
@@ -343,6 +415,11 @@ void ParseRequestData::setPropItem(std::string& key, const std::string& value)
     _requestBuffer->_props.insert(std::make_pair(key, value));
 }
 
+/**
+ * @brief 设置加密版本的prop数据
+ * @param enPropKey prop的键
+ * @param enPropValue prop的值
+ */
 void ParseRequestData::setEnPropItem(const std::string& enPropKey,
         const std::string& enPropValue)
 {
@@ -350,6 +427,11 @@ void ParseRequestData::setEnPropItem(const std::string& enPropKey,
     _requestBuffer->_enPropValues.push_back(enPropValue);
 }
 
+/**
+ * @brief 获取prop的某个值
+ * @param key prop的键
+ * @return 返回prop的某个值
+ */
 const std::string ParseRequestData::propValue(std::string key)
 {
     PropMap::iterator it = _requestBuffer->_props.find(key);
@@ -360,6 +442,11 @@ const std::string ParseRequestData::propValue(std::string key)
     return std::string();
 }
 
+/**
+ * @brief 获取prop的某个值并转换成int
+ * @param key prop的键
+ * @return 返回prop的某个值得int数值
+ */
 const std::size_t ParseRequestData::propValueToInt(std::string key)
 {
     std::string propValue = this->propValue(key);

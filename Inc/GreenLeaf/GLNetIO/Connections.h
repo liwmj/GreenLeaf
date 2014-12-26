@@ -1,10 +1,10 @@
-/*
- * Connections.h
- *
- *  Created on: Nov 5, 2014
- *      Author: wim
+/**
+ * @file Connections.h
+ * @brief 连接集合的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef CONNECTIONS_H
 #define CONNECTIONS_H
 
@@ -19,6 +19,9 @@ namespace GLNetIO {
 
 typedef std::map<std::string, TcpConnectionPtr> TcpConnectionPtrMap;
 
+/**
+ * @brief 连接集合类
+ */
 class Connections: public boost::enable_shared_from_this<Connections>
 {
 public:
@@ -33,7 +36,7 @@ public:
 private:
     typedef boost::asio::ip::tcp tcp;
 
-    TcpConnectionPtrMap _tcpConnectionPtrMap;
+    TcpConnectionPtrMap _tcpConnectionPtrMap;   /**< 存放连接的容器 */
 
 };
 typedef boost::shared_ptr<Connections> ConnectionsPtr;

@@ -1,10 +1,10 @@
-/*
- * OracleConnectionPool.h
- *
- *  Created on: Nov 20, 2014
- *      Author: wim
+/**
+ * @file OracleConnectionPool.h
+ * @brief oracle连接池的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef ORACLECONNECTIONPOOL_H
 #define ORACLECONNECTIONPOOL_H
 
@@ -28,6 +28,9 @@ using namespace std;
 namespace GreenLeaf {
 namespace GLDBIO {
 
+/**
+ * @brief oracle数据库连接池类
+ */
 class OracleConnectionPool: private boost::noncopyable, public ConnectionPoolAbstract<otl_connect>
 {
 public:
@@ -46,7 +49,7 @@ private:
     typedef ConnectionPoolAbstract<otl_connect> super;
 
 private:
-    std::string _connStr;
+    std::string _connStr;   /**< oracle连接所需信息 */
 
 };
 

@@ -1,10 +1,10 @@
-/*
- * Uuid.h
- *
- *  Created on: Nov 26, 2014
- *      Author: wim
+/**
+ * @file Uuid.h
+ * @brief uuid工具的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef UUID_H
 #define UUID_H
 
@@ -17,6 +17,9 @@
 namespace GreenLeaf {
 namespace GLUtils {
 
+/**
+ * @brief uuid类
+ */
 class Uuid: private boost::noncopyable
 {
 public:
@@ -27,7 +30,7 @@ public:
 
 
 private:
-    boost::uuids::random_generator _rgen;
+    boost::uuids::random_generator _rgen;   /**< 随机种子 */
 
 };
 

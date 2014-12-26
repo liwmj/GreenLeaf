@@ -1,10 +1,10 @@
-/*
- * MsgHandlerRepository.h
- *
- *  Created on: Nov 12, 2014
- *      Author: wim
+/**
+ * @file MsgHandlerRepository.h
+ * @brief 消息处理器仓库的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef MSGHANDLERREPOSITORY_H
 #define MSGHANDLERREPOSITORY_H
 
@@ -14,6 +14,10 @@
 namespace GreenLeaf {
 namespace GLNetIO {
 
+/**
+ * @brief 消息处理器仓库类
+ * @tparam Handler 具体的操作
+ */
 template<typename Handler>
 class MsgHandlerRepository
 {
@@ -34,7 +38,7 @@ private:
 private:
     typedef std::map<std::string, Handler> HandlerMap;
 
-    HandlerMap handlers;
+    HandlerMap handlers;    /**< 存放处理的容器 */
 
 };
 

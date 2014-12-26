@@ -1,10 +1,10 @@
-/*
- * Sessions.h
- *
- *  Created on: Nov 12, 2014
- *      Author: wim
+/**
+ * @file Sessions.h
+ * @brief session集合的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef SESSIONS_H
 #define SESSIONS_H
 
@@ -21,6 +21,9 @@ namespace GLNetIO {
 
 typedef std::map<std::string, ConnectionsPtr> ConnectionsPtrMap;
 
+/**
+ * @brief session集合类
+ */
 class Sessions
 {
 public:
@@ -34,7 +37,7 @@ public:
             ConnectionsPtr connections);
 
 private:
-    ConnectionsPtrMap _connectionsPtrMap;
+    ConnectionsPtrMap _connectionsPtrMap;   /**< 存放连接集合的容器 */
 
 };
 typedef boost::shared_ptr<Sessions> SessionsPtr;

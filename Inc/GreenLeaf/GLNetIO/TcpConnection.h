@@ -1,10 +1,10 @@
-/*
- * Connection.h
- *
- *  Created on: Nov 5, 2014
- *      Author: wim
+/**
+ * @file TcpConnection.h
+ * @brief tcp连接的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef TCPCONNECTION_H
 #define TCPCONNECTION_H
 
@@ -22,6 +22,9 @@ class MessageBuffer;
 class ParseRequestData;
 class BundleResponseData;
 
+/**
+ * @brief tcp基础连接类
+ */
 class TcpConnection: public boost::enable_shared_from_this<TcpConnection>
 {
 public:
@@ -61,16 +64,16 @@ protected:
     void handleData(MessageBufferPtr msg, const std::size_t& bytes);
 
 private:
-    std::string _userID;
-    std::string _sessionType;
-    std::string _connectionType;
-    std::string _id;
-    tcp::socket _sock;
-    std::time_t _lastRecvTime;
-    boost::asio::io_service& _netIOService;
-    boost::asio::deadline_timer _netTimer;
+    std::string _userID;                            /**< 用户的唯一标示 */
+    std::string _sessionType;                       /**< session类型 */
+    std::string _connectionType;                    /**< 连接类型 */
+    std::string _id;                                /**< 连接ID */
+    tcp::socket _sock;                              /**< 连接里的sock */
+    std::time_t _lastRecvTime;                      /**< 最后一次接受时间 */
+    boost::asio::io_service& _netIOService;         /**< 通讯所需io */
+    boost::asio::deadline_timer _netTimer;          /**< 连接定时检查器 */
 
-    boost::shared_ptr<ParseRequestData> _request;
+    boost::shared_ptr<ParseRequestData> _request;   /**< 请求缓冲区 */
 
     boost::function<void(const std::string& userID,
             const std::string& sessionID,

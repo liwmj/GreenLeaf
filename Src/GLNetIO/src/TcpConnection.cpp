@@ -1,10 +1,10 @@
-/*
- * Connection.cpp
- *
- *  Created on: Nov 5, 2014
- *      Author: wim
+/**
+ * @file TcpConnection.cpp
+ * @brief Tcp连接的实现文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #include <iostream>
 #include <string>
 #include <boost/bind.hpp>
@@ -19,6 +19,11 @@
 namespace GreenLeaf {
 namespace GLNetIO {
 
+/**
+ * @brief 初始化TcpConnection对象
+ * @param service 运行所需io
+ * @param id 连接id
+ */
 TcpConnection::TcpConnection(boost::asio::io_service& service, const std::string& id):
         _id(id),
         _sock(service),
@@ -29,10 +34,19 @@ TcpConnection::TcpConnection(boost::asio::io_service& service, const std::string
 {
 }
 
+/**
+ * @brief 析构TcpConnection对象
+ */
 TcpConnection::~TcpConnection()
 {
 }
 
+/**
+ * @brief 设置连接的属性
+ * @param userID 用户的唯一标示
+ * @param sessionType session类型
+ * @param connectionType 连接类型
+ */
 void TcpConnection::setConnectionProps(const std::string& userID,
         const std::string& sessionType,
         const std::string& connectionType)
@@ -42,30 +56,55 @@ void TcpConnection::setConnectionProps(const std::string& userID,
     _connectionType = connectionType;
 }
 
+/**
+ * @brief 获取用户的唯一标示
+ * @return 返回用户的唯一标示
+ */
 const std::string& TcpConnection::userID() const
 {
     return _userID;
 }
 
+/**
+ * @brief 获取连接的session类型
+ * @return 返回连接的session类型
+ */
 const std::string& TcpConnection::sessionType() const
 {
     return _sessionType;
 }
 
+/**
+ * @brief 获取连接的连接类型
+ * @return 返回连接的连接类型
+ */
 const std::string& TcpConnection::connectionType() const
 {
     return _connectionType;
 }
 
+/**
+ * @brief 获取当前连接的socket
+ * @return 返回单签连接的socket
+ */
 TcpConnection::tcp::socket& TcpConnection::socket()
 {
     return _sock;
 }
+
+/**
+ * @brief 获取连接id
+ * @return 返回连接id
+ */
 const std::string& TcpConnection::id() const
 {
     return _id;
 }
 
+/**
+ * @brief 设置删除连接所需的回调
+ * @param operation 指定回调
+ */
 void TcpConnection::setRemoveCallBack(boost::function<void(const std::string&,
         const std::string&,
         const std::string&)> operation)
@@ -73,6 +112,9 @@ void TcpConnection::setRemoveCallBack(boost::function<void(const std::string&,
     _operationRemoveConnection = operation;
 }
 
+/**
+ * @brief 开始接受数据
+ */
 void TcpConnection::startReceive()
 {
     MessageBufferPtr msg(new MessageBuffer);
@@ -87,6 +129,10 @@ void TcpConnection::startReceive()
                     msg));
 }
 
+/**
+ * @brief 发送数据
+ * @param msg 指定数据
+ */
 void TcpConnection::sendMessage(std::string msg)
 {
     boost::asio::async_write(
@@ -96,10 +142,13 @@ void TcpConnection::sendMessage(std::string msg)
                     boost::asio::placeholders::error));
 }
 
+/**
+ * @brief 发送打包好的应答数据
+ * @param data 应答数据的指针
+ */
 void TcpConnection::sendBundleMessage(ResponseBufferPtr data)
 {
     BundleResponseData response;
-//    std::cout << "BUNDLE_DATA:-----------------------\n" << response.bundleAllData(data) << "--------------------------\n" << std::endl;
 
     boost::asio::async_write(
                 _sock,
@@ -109,6 +158,9 @@ void TcpConnection::sendBundleMessage(ResponseBufferPtr data)
 
 }
 
+/**
+ * @brief 连接超时检查
+ */
 void TcpConnection::handleTimeout()
 {
     if (!_sock.is_open())
@@ -133,6 +185,10 @@ void TcpConnection::handleTimeout()
     _netTimer.async_wait(boost::bind(&TcpConnection::handleTimeout, shared_from_this()));
 }
 
+/**
+ * @brief 处理发送
+ * @param error 错误代码
+ */
 void TcpConnection::handleSend(const boost::system::error_code& error)
 {
     if (error) {
@@ -147,6 +203,12 @@ void TcpConnection::handleSend(const boost::system::error_code& error)
     }
 }
 
+/**
+ * @brief 处理接受
+ * @param error 错误代码
+ * @param bytes 接受到的数据大小
+ * @param msg 接受到的数据
+ */
 void TcpConnection::handleReceive(const boost::system::error_code& error,
         std::size_t bytes,
         MessageBufferPtr msg)
@@ -155,7 +217,6 @@ void TcpConnection::handleReceive(const boost::system::error_code& error,
         if (!_sock.is_open())
             return ;
 
-//        std::cout << "DATA:-----------------------\n" << std::string(msg->_data) << "\n--------------------------\n" << std::endl;
         this->handleData(msg, bytes);
 
         msg.reset(new MessageBuffer);
@@ -180,6 +241,11 @@ void TcpConnection::handleReceive(const boost::system::error_code& error,
     }
 }
 
+/**
+ * @brief 处理接受到的数据
+ * @param msg 需处理的数据
+ * @param bytes 数据大小
+ */
 void TcpConnection::handleData(MessageBufferPtr msg, const std::size_t& bytes)
 {
     msg->_data[bytes] = '\0';

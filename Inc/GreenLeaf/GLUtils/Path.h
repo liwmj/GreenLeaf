@@ -1,10 +1,10 @@
-/*
- * Path.h
- *
- *  Created on: Nov 7, 2014
- *      Author: wim
+/**
+ * @file Path.h
+ * @brief 路径工具类的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef PATH_H
 #define PATH_H
 
@@ -13,6 +13,9 @@
 namespace GreenLeaf {
 namespace GLUtils {
 
+/**
+ * @brief 路径工具类
+ */
 class Path: private boost::noncopyable
 {
 public:

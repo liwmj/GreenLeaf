@@ -1,10 +1,10 @@
-/*
- * XmlParse.h
- *
- *  Created on: Nov 6, 2014
- *      Author: wim
+/**
+ * @file XmlParse.h
+ * @brief xml解析的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef XMLPARSE_H
 #define XMLPARSE_H
 
@@ -15,6 +15,9 @@
 namespace GreenLeaf {
 namespace GLDiskIO {
 
+/**
+ * @brief xml解析类
+ */
 class XmlParse
 {
 public:
@@ -62,7 +65,7 @@ private:
     explicit XmlParse();
 
 private:
-    Properties _properties;
+    Properties _properties;     /**< 解析xml所需容器 */
 
 };
 

@@ -1,10 +1,10 @@
-/*
- * MySqlConnectionPool.h
- *
- *  Created on: Nov 20, 2014
- *      Author: wim
+/**
+ * @file MySqlConnectionPool.h
+ * @brief MySql连接池的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef MYSQLCONNECTIONPOOL_H
 #define MYSQLCONNECTIONPOOL_H
 
@@ -19,6 +19,9 @@
 namespace GreenLeaf {
 namespace GLDBIO {
 
+/**
+ * @brief MySql连接池类
+ */
 class MySqlConnectionPool: private boost::noncopyable, public ConnectionPoolAbstract<MYSQL>
 {
 public:
@@ -48,10 +51,10 @@ private:
     typedef ConnectionPoolAbstract<MYSQL> super;
 
 private:
-    std::string _serverAddr;
-    std::string _username;
-    std::string _passwd;
-    std::string _dbname;
+    std::string _serverAddr;    /**< mysql服务器的ip */
+    std::string _username;      /**< mysql服务器的用户名 */
+    std::string _passwd;        /**< mysql服务器的密码 */
+    std::string _dbname;        /**< 需要使用的数据库名 */
 
 };
 

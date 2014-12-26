@@ -1,10 +1,10 @@
-/*
- * Logger.h
- *
- *  Created on: Nov 6, 2014
- *      Author: wim
+/**
+ * @file Logger.h
+ * @brief 日志工具的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef LOGGER_H
 #define LOGGER_H
 
@@ -15,10 +15,14 @@
 namespace GreenLeaf {
 namespace GLUtils {
 
+/** 日志等级枚举 */
 enum LoggerLevel {
     LL_TRACE = 1, LL_DEBUG, LL_INFO, LL_WARN, LL_ERROR
 };
 
+/**
+ * @brief 日志工具类
+ */
 class Logger: boost::noncopyable
 {
 public:
@@ -192,9 +196,9 @@ private:
     void writeDateStr(const LoggerLevel& lev);
 
 private:
-    LoggerLevel _level;
-    std::ostream* _out;
-    boost::mutex _mutex;
+    LoggerLevel _level;     /**< 日志等级 */
+    std::ostream* _out;     /**< 输出流 */
+    boost::mutex _mutex;    /**< 多线程所需锁 */
 
 };
 

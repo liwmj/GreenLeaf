@@ -1,10 +1,10 @@
-/*
- * ActiveTcpConnection.cpp
- *
- *  Created on: Nov 12, 2014
- *      Author: wim
+/**
+ * @file ActiveTcpConnection.cpp
+ * @brief 主动连接的实现文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #include <boost/bind.hpp>
 
 #include "GreenLeaf/GLNetIO/ActiveTcpConnection.h"
@@ -12,6 +12,13 @@
 namespace GreenLeaf {
 namespace GLNetIO {
 
+    /**
+     * @brief 初始化ActiveTcpConnection对象
+     * @param service 指定操作io
+     * @param id 连接的id
+     * @param ip 地址
+     * @param port 端口):
+     */
 ActiveTcpConnection::ActiveTcpConnection(boost::asio::io_service& service,
         const std::string& id, const std::string& ip, unsigned short port):
                 _utils(GLUtils::Utils::instance()),
@@ -19,6 +26,9 @@ ActiveTcpConnection::ActiveTcpConnection(boost::asio::io_service& service,
 {
 }
 
+/**
+ * @brief 主动请求连接
+ */
 void ActiveTcpConnection::connect()
 {
     tcp::resolver resolver(this->socket().get_io_service());
@@ -46,6 +56,10 @@ void ActiveTcpConnection::connect()
                     boost::asio::placeholders::error));
 }
 
+/**
+ * @brief 处理请求成功后的处理
+ * @param error 错误码
+ */
 void ActiveTcpConnection::handleConnect(const boost::system::error_code& error)
 {
     if (!error) {

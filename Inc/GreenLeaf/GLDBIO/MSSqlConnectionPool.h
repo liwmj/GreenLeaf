@@ -1,10 +1,10 @@
-/*
- * OdbcConnectionPool.h
- *
- *  Created on: Nov 20, 2014
- *      Author: wim
+/**
+ * @file MSSqlConnectionPool.h
+ * @brief SQL Server连接池的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef ODBCCONNECTIONPOOL_H
 #define ODBCCONNECTIONPOOL_H
 
@@ -27,6 +27,9 @@ using namespace std;
 namespace GreenLeaf {
 namespace GLDBIO {
 
+/**
+ * @brief SQL Server连接池类
+ */
 class MSSqlConnectionPool: private boost::noncopyable, public ConnectionPoolAbstract<otl_connect>
 {
 public:
@@ -45,7 +48,7 @@ private:
     typedef ConnectionPoolAbstract<otl_connect> super;
 
 private:
-    std::string _connStr;
+    std::string _connStr;   /**< SQL Server连接信息 */
 
 };
 

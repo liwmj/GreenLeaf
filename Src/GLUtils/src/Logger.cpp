@@ -1,10 +1,10 @@
-/*
- * Logger.cpp
- *
- *  Created on: Nov 6, 2014
- *      Author: wim
+/**
+ * @file Logger.cpp
+ * @brief 日志工具的实现文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -16,24 +16,40 @@
 namespace GreenLeaf {
 namespace GLUtils {
 
-Logger::Logger() :
-        _level(LL_TRACE),
-        _out(NULL)
-{
-}
-
+/**
+ * @brief 创建Logger的单例对象
+ * @return 返回Logger对象
+ */
 Logger& Logger::instance()
 {
     static Logger _gInstance;
     return _gInstance;
 }
 
+/**
+ * @brief 初始化Logger对象
+ */
+Logger::Logger() :
+        _level(LL_TRACE),
+        _out(NULL)
+{
+}
+
+/**
+ * @brief 初始化Logger
+ * @param lev 指定日志等级
+ * @param out 指定输出流
+ */
 void Logger::init(const LoggerLevel& lev, std::ostream* out)
 {
     _level = lev;
     _out = out;
 }
 
+/**
+ * @brief 重新设置输出流
+ * @param out 指定输出流
+ */
 void Logger::resetOut(std::ostream* out) {
     std::ofstream* tmp = dynamic_cast<std::ofstream*>(_out);
     if (NULL != tmp)
@@ -42,11 +58,20 @@ void Logger::resetOut(std::ostream* out) {
     _out = out;
 }
 
+/**
+ * @brief 重新设置日志等级
+ * @param lev 指定日志等级
+ */
 void Logger::resetLevel(const LoggerLevel& lev)
 {
     _level = lev;
 }
 
+/**
+ * @brief 转换日志等级为串
+ * @param lev 指定等级
+ * @return 返回日志等级串
+ */
 std::string Logger::levelToString(const LoggerLevel& lev)
 {
     switch (lev) {
@@ -63,6 +88,10 @@ std::string Logger::levelToString(const LoggerLevel& lev)
     }
 }
 
+/**
+ * @brief 写入日志
+ * @param lev 指定日志等级
+ */
 void Logger::writeDateStr(const LoggerLevel& lev)
 {
     if (NULL != _out)

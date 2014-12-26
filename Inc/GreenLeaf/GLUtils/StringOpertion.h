@@ -1,10 +1,10 @@
-/*
- * StringOpertion.h
- *
- *  Created on: Dec 23, 2014
- *      Author: wim
+/**
+ * @file StringOpertion.h
+ * @brief 字符串操作的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef STRINGOPERTION_H
 #define STRINGOPERTION_H
 
@@ -15,6 +15,9 @@
 namespace GreenLeaf {
 namespace GLUtils {
 
+/**
+ * @brief 字符串操作类
+ */
 class StringOperation: private boost::noncopyable
 {
 public:

@@ -1,10 +1,10 @@
-/*
- * SessionManager.h
- *
- *  Created on: Dec 15, 2014
- *      Author: wim
+/**
+ * @file SessionManager.h
+ * @brief session管理的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef SESSIONMANAGER_H
 #define SESSIONMANAGER_H
 
@@ -17,6 +17,9 @@
 namespace GreenLeaf {
 namespace GLNetIO {
 
+/**
+ * @brief session管理类
+ */
 class SessionManager: private boost::noncopyable
 {
 public:
@@ -54,8 +57,8 @@ public:
 private:
     typedef std::map<std::string, SessionsPtr> SessionsPtrMap;
 
-    SessionsPtrMap _sessionsPtrMap;
-    boost::mutex _mutex;
+    SessionsPtrMap _sessionsPtrMap;     /**< 存放session的容器 */
+    boost::mutex _mutex;                /**< session管理所需的锁 */
 
 };
 

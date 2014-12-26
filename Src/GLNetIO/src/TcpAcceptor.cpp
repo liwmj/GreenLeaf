@@ -1,10 +1,10 @@
-/*
- * TcpAcceptor.cpp
- *
- *  Created on: Nov 4, 2014
- *      Author: wim
+/**
+ * @file TcpAcceptor.cpp
+ * @brief 监听TCP的实现文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #include <iostream>
 #include <boost/bind.hpp>
 
@@ -14,6 +14,12 @@
 namespace GreenLeaf {
 namespace GLNetIO {
 
+/**
+ * @brief 初始化TcpAcceptor对象
+ * @param service 运行所需io
+ * @param listenPort 监听端口
+ * @param operation 回调函数
+ */
 TcpAcceptor::TcpAcceptor(boost::asio::io_service& service, unsigned short listenPort,
         boost::function<void(TcpConnectionPtr)> operation):
                 _utils(GLUtils::Utils::instance()),
@@ -28,6 +34,11 @@ TcpAcceptor::TcpAcceptor(boost::asio::io_service& service, unsigned short listen
                     boost::asio::placeholders::error));
 }
 
+/**
+ * @brief 处理监听成功
+ * @param conn 监听到的连接
+ * @param error 错误代码
+ */
 void TcpAcceptor::handleAccept(TcpConnectionPtr conn,
         const boost::system::error_code& error)
 {

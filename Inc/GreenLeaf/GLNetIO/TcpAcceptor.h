@@ -1,10 +1,10 @@
-/*
- * TcpAcceptor.h
- *
- *  Created on: Nov 4, 2014
- *      Author: wim
+/**
+ * @file TcpAcceptor.h
+ * @brief tcp监听的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef TCPACCEPTOR_H
 #define TCPACCEPTOR_H
 
@@ -24,6 +24,9 @@ namespace GLNetIO {
 
 class TcpConnection;
 
+/**
+ * @brief tcp监听类
+ */
 class TcpAcceptor
 {
 public:
@@ -39,10 +42,9 @@ private:
             const boost::system::error_code& error);
 
 private:
-    GLUtils::Utils& _utils;
-    boost::asio::io_service& _svc;
-    tcp::acceptor _acceptor;
-    boost::uuids::random_generator _rgen;
+    GLUtils::Utils& _utils;                 /**< GLUtils库的引用 */
+    boost::asio::io_service& _svc;          /**< 监听需要使用的io */
+    tcp::acceptor _acceptor;                /**< 监听对象 */
 
     boost::function<void(boost::shared_ptr<TcpConnection> conn)> _operationAfterAccept;
 };

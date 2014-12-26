@@ -1,10 +1,10 @@
-/*
- * IniParse.h
- *
- *  Created on: Nov 7, 2014
- *      Author: wim
+/**
+ * @file IniParse.h
+ * @brief ini解析的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef INIPARSE_H
 #define INIPARSE_H
 
@@ -15,6 +15,9 @@
 namespace GreenLeaf {
 namespace GLDiskIO {
 
+/**
+ * @brief ini解析类
+ */
 class IniParse
 {
 public:
@@ -62,7 +65,7 @@ private:
     explicit IniParse();
 
 private:
-    Properties _properties;
+    Properties _properties;     /**< 操作ini所需容器 */
 
 };
 

@@ -1,10 +1,10 @@
-/*
- * Datatime.h
- *
- *  Created on: Dec 19, 2014
- *      Author: wim
+/**
+ * @file Datatime.h
+ * @brief 日期时间的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef DATATIME_H
 #define DATATIME_H
 
@@ -13,6 +13,9 @@
 namespace GreenLeaf {
 namespace GLUtils {
 
+/**
+ * @brief 日期时间类
+ */
 class Datatime: private boost::noncopyable
 {
 public:

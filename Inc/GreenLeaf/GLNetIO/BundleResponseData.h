@@ -1,10 +1,10 @@
-/*
- * BundleResponseData.h
- *
- *  Created on: Nov 10, 2014
- *      Author: wim
+/**
+ * @file BundleResponseData.h
+ * @brief 打包应答数据的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef BUNDLERESPONSEDATA_H
 #define BUNDLERESPONSEDATA_H
 
@@ -18,6 +18,9 @@
 namespace GreenLeaf {
 namespace GLNetIO {
 
+/**
+ * @brief 打包应答数据类
+ */
 class BundleResponseData
 {
 public:
@@ -31,7 +34,7 @@ private:
     void writePropsData(ResponseBufferPtr data);
 
 private:
-    std::ostringstream _allData;
+    std::ostringstream _allData;    /**< 打包数据所需流 */
 
 };
 
