@@ -12,13 +12,13 @@
 namespace GreenLeaf {
 namespace GLNetIO {
 
-    /**
-     * @brief 初始化ActiveTcpConnection对象
-     * @param service 指定操作io
-     * @param id 连接的id
-     * @param ip 地址
-     * @param port 端口):
-     */
+/**
+ * @brief 初始化ActiveTcpConnection对象
+ * @param service 指定操作io
+ * @param id 连接的id
+ * @param ip 地址
+ * @param port 端口
+ */
 ActiveTcpConnection::ActiveTcpConnection(boost::asio::io_service& service,
         const std::string& id, const std::string& ip, unsigned short port):
                 _utils(GLUtils::Utils::instance()),

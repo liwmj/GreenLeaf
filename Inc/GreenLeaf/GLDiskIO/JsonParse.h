@@ -1,10 +1,10 @@
-/*
- * JsonParse.h
- *
- *  Created on: Nov 6, 2014
- *      Author: wim
+/**
+ * @file JsonParse.h
+ * @brief json解析的声明文件
+ * @author Wim
+ * @version v1.0
+ * @date 2014-12-26
  */
-
 #ifndef JSONPARSE_H
 #define JSONPARSE_H
 
@@ -15,6 +15,9 @@
 namespace GreenLeaf {
 namespace GLDiskIO {
 
+/**
+ * @brief json解析类
+ */
 class JsonParse
 {
 public:
@@ -62,7 +65,7 @@ private:
     explicit JsonParse();
 
 private:
-    Properties _properties;
+    Properties _properties     /**< 解析xml所需容器 */;
 
 };
 
