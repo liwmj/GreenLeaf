@@ -2,7 +2,7 @@
  * CCLDefines.h
  *
  *  Created on: Dec 1, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #ifndef CCLDEFINES_H

@@ -1,7 +1,7 @@
 /**
  * @file XmlParse.h
  * @brief xml解析的声明文件
- * @author Wim
+ * @author Mason
  * @version v1.0
  * @date 2014-12-26
  */

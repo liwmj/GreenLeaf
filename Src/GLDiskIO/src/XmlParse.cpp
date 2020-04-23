@@ -1,7 +1,7 @@
 /**
  * @file XmlParse.cpp
  * @brief xml解析的实现文件
- * @author Wim
+ * @author Mason
  * @version v1.0
  * @date 2014-12-26
  */

@@ -1,7 +1,7 @@
 /**
  * @file MySqlConnectionPool.h
  * @brief MySql连接池的声明文件
- * @author Wim
+ * @author Mason
  * @version v1.0
  * @date 2014-12-26
  */

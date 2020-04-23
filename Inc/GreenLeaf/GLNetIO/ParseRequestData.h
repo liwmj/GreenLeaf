@@ -1,7 +1,7 @@
 /**
  * @file ParseRequestData.h
  * @brief 解析请求数据的声明文件
- * @author Wim
+ * @author Mason
  * @version v1.0
  * @date 2014-12-26
  */

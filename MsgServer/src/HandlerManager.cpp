@@ -2,7 +2,7 @@
  * HandlerManager.cpp
  *
  *  Created on: Nov 12, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #include <boost/bind.hpp>

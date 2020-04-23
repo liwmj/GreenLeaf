@@ -1,7 +1,7 @@
 /**
  * @file StringOpertion.cpp
  * @brief 字符串操作的实现文件
- * @author Wim
+ * @author Mason
  * @version v1.0
  * @date 2014-12-26
  */

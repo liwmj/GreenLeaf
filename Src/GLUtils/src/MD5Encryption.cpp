@@ -2,7 +2,7 @@
  * MD5Encryption.cpp
  *
  *  Created on: Nov 26, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 /* F, G, H and I are basic MD5 functions */

@@ -1,7 +1,7 @@
 /**
  * @file Path.cpp
  * @brief 路径工具的实现工具
- * @author Wim
+ * @author Mason
  * @version v1.0
  * @date 2014-12-26
  */

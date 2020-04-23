@@ -2,7 +2,7 @@
  * DemoServerImpl.h
  *
  *  Created on: Nov 4, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #ifndef DEMOSERVERIMPL_H

@@ -2,7 +2,7 @@
  * DemoServer.cpp
  *
  *  Created on: NOv 4, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #include "GreenLeaf/MsgServer/MsgServerImpl.h"

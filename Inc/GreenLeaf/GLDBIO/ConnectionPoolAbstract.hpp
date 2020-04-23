@@ -1,7 +1,7 @@
 /**
  * @file ConnectionPoolAbstract.hpp
  * @brief 连接池抽象基类的声明与实现文件
- * @author Wim
+ * @author Mason
  * @version v1.0
  * @date 2014-12-26
  */

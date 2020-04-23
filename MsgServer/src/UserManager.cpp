@@ -2,7 +2,7 @@
  * UserManagers.cpp
  *
  *  Created on: Nov 12, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #include "GreenLeaf/MsgServer/UserManager.h"

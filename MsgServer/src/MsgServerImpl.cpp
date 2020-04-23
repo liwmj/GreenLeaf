@@ -2,7 +2,7 @@
  * ServerImpl.cpp
  *
  *  Created on: Nov 4, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #include <csignal>

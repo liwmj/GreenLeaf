@@ -2,7 +2,7 @@
  * MD5Encryption.h
  *
  *  Created on: Nov 26, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #ifndef MD5ENCRYPTION_H

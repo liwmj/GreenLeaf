@@ -2,7 +2,7 @@
  * main.cpp
  *
  *  Created on: Oct 30, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #include <iostream>

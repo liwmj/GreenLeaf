@@ -2,7 +2,7 @@
  * ErrorCode.h
  *
  *  Created on: Nov 13, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #ifndef ERRORCODE_H

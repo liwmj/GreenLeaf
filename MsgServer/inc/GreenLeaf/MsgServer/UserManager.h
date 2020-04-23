@@ -2,7 +2,7 @@
  * UserManagers.h
  *
  *  Created on: Nov 12, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #ifndef USERMANAGER_H

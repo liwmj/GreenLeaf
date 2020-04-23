@@ -2,7 +2,7 @@
  * HandlerCommon.h
  *
  *  Created on: Nov 13, 2014
- *      Author: wim
+ *      Author: Mason
  */
 
 #ifndef HANDLERCOMMON_H
